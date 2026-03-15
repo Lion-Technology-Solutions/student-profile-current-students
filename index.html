@@ -23,19 +23,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
 :root {
-  --bg: #0b1020;
-  --panel: #121a31;
+  --bg: #1a0205;
+  --panel: #3d0a0e;
   --panel-2: #ffffff;
-  --text: #e9eefc;
-  --muted: #b5c0de;
-  --dark: #111827;
-  --soft: #eef3ff;
-  --line: rgba(255, 255, 255, 0.08);
-  --accent: #2563eb;
-  --accent-2: #dc2626;
+  --text: #ffd9d9;
+  --muted: #d37f7f;
+  --dark: #1f0101;
+  --soft: #ffe0e0;
+  --line: rgba(255, 80, 80, 0.15);
+  --accent: #e02020;
+  --accent-2: #1d72f5;
   --success: #16a34a;
-  --warning: #f59e0b;
-  --shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+  --warning: #f53b3b; /*Pascal has modified the warning color to be more visible on dark backgrounds*/
+  --shadow: 0 20px 45px rgba(120, 0, 0, 0.45);
   --radius: 20px;
 }
 
@@ -51,6 +51,10 @@ body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(220, 30, 30, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 80, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(61, 10, 14, 0.9) 0%, #1a0205 100%);
   color: var(--text);
 }
 
@@ -74,8 +78,9 @@ img {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(11, 16, 32, 0.78);
-  border-bottom: 1px solid var(--line);
+  background: rgba(26, 2, 5, 0.88);
+  border-bottom: 1px solid rgba(220, 30, 30, 0.3);
+  box-shadow: 0 4px 30px rgba(87, 1, 1, 0.2);
 }
 
 .nav-wrap {
@@ -124,8 +129,9 @@ img {
 
 .hero {
   padding: 5rem 0 3rem;
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.28), transparent 28%),
-    radial-gradient(circle at left center, rgba(220, 38, 38, 0.18), transparent 26%);
+  background: radial-gradient(circle at top right, rgba(220, 30, 30, 0.5), transparent 35%),
+    radial-gradient(circle at bottom left, rgba(255, 120, 0, 0.2), transparent 35%),
+    radial-gradient(circle at center, rgba(61, 10, 14, 0.6), transparent 70%);
 }
 
 .hero-grid,
@@ -545,7 +551,7 @@ img {
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#home" aria-label="LionTech Live Classes home">
+      <a class="brand" href="#home" aria-label="LionTech Live Classes Home">
         <img src="https://raw.githubusercontent.com/Lion-Technology-Solutions/Images/main/l7.jpg" alt="LionTech logo" />
         <div>
           <span class="brand-kicker">LionTech</span>
@@ -665,20 +671,21 @@ img {
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-tag">Pull request lab</p>
+            <p class="section-tag">Pull Request Lab</p> /*Pascal has changed the section tag to better reflect the content of the section*/
             <h2>How students contribute their profile</h2>
           </div>
         </div>
 
         <div class="steps-grid">
           <article class="step-card"><span>1</span><h3>Fork the project</h3><p>Each student forks the repository to their own GitHub account.</p></article>
-          <article class="step-card"><span>2</span><h3>Edit one profile object</h3><p>Update a single student entry in <code>script.js</code> using your real details.</p></article>
+          <article class="step-card"><span>2</span><h3>Edit one profile object</h3><p>Open the <code>studentProfiles</code> section in this HTML file and either add your own object or replace one placeholder slot with your real details.</p></article>
           <article class="step-card"><span>3</span><h3>Commit changes</h3><p>Use a clean commit message such as <code>add my student profile</code>.</p></article>
           <article class="step-card"><span>4</span><h3>Open a pull request</h3><p>Submit your PR to the main repository for instructor review.</p></article>
         </div>
 
         <div class="code-box">
-<pre><code>const newStudentProfile = {
+<pre><code>// Add this inside the studentProfiles array
+const newStudentProfile = {
   id: 24,
   name: "Denis Wadinga",
   role: "old Student",
@@ -741,6 +748,39 @@ img {
   </footer>
 
   <script>
+/*
+============================================================
+STUDENT INSTRUCTIONS: HOW TO ADD YOUR PROFILE
+============================================================
+1. Find the studentProfiles array below.
+2. Copy the sample object template inside the comment.
+3. Paste your new profile object inside the array, or replace one placeholder slot.
+4. Update every field with your own details.
+5. Save the file, commit your change, and open a pull request.
+
+PROFILE TEMPLATE
+{
+  id: 2,
+  name: "Your Full Name",
+  role: "Current Student",
+  image: "https://your-photo-link.com/photo.jpg",
+  description: "Write 1-2 sentences about yourself.",
+  city: "Your City",
+  country: "Your Country",
+  linkedin: "https://www.linkedin.com/in/your-linkedin/",
+  dreamJob: "Your Dream Career",
+  skills: ["Skill 1", "Skill 2", "Skill 3"],
+  isPlaceholder: false
+}
+
+IMPORTANT:
+- Use a unique id number.
+- Set isPlaceholder to false.
+- Keep commas between fields.
+- If you do not have a photo yet, you can keep the placeholder image temporarily.
+============================================================
+*/
+
 const studentProfiles = [
   {
     id: 1,
@@ -757,11 +797,11 @@ const studentProfiles = [
   }
 ];
 
-function buildPlaceholderProfiles(total = 120) {
+function buildPlaceholderProfiles(total = 1) {
   for (let i = 2; i <= total; i += 1) {
     studentProfiles.push({
-      id: i,
-      name: `Student ${i}`,
+      id: 2,
+      name: `elvis ${i}`,
       role: "Current Student",
       image: "https://via.placeholder.com/300x300.png?text=Add+Photo",
       description: "This slot is ready for a student to update through a pull request.",
@@ -770,10 +810,30 @@ function buildPlaceholderProfiles(total = 120) {
       linkedin: "#",
       dreamJob: "Add dream career",
       skills: ["Add skill 1", "Add skill 2"],
-      isPlaceholder: true
+      isPlaceholder: false
     });
   }
 }
+
+/*
+OPTION 1: REPLACE A PLACEHOLDER SLOT
+-----------------------------------
+Instead of adding a brand-new object, a student can edit one generated placeholder.
+Example:
+studentProfiles[1] = {
+  id: 2,
+  name: "Jane Doe",
+  role: "Current Student",
+  image: "https://your-photo-link.com/jane.jpg",
+  description: "I am learning Git and GitHub through LionTech live classes.",
+  city: "Toronto",
+  country: "Canada",
+  linkedin: "https://www.linkedin.com/in/janedoe/",
+  dreamJob: "DevOps Engineer",
+  skills: ["Git", "GitHub", "Linux", "Docker"],
+  isPlaceholder: false
+};
+*/
 
 buildPlaceholderProfiles(120);
 
